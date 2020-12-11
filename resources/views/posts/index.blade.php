@@ -29,14 +29,14 @@
 
                     @foreach ($posts as $post)
                         <tr>
-                            <th> {{ $post -> id }} </th>
+                            <th> {{ $post -> post_id }} </th>
                             <th> {{ $post -> name }} </th>
-                            <td> {{ $post -> title }} </td>
-                            <td> {{ substr( $post -> body, 0, 50 ) }} {{ strlen( $post -> body ) > 50 ? '...' : '' }} </td>
-                            <td> {{ date('j M, Y', strtotime( $post -> created_at )) }} </td>
+                            <td> {{ $post -> post_title }} </td>
+                            <td> {{ substr( $post -> post_body, 0, 50 ) }} {{ strlen( $post -> post_body ) > 50 ? '...' : '' }} </td>
+                            <td> {{ date('j M, Y', strtotime( $post -> post_created_at )) }} </td>
                             <td>
-                                <a href="{{ route('posts.show', $post -> id) }}" class="btn btn-primary btn-sm">View</a>
-                                <a href="{{ route('posts.edit', $post -> id) }}" class="btn btn-primary btn-sm">Edit</a>
+                                <a href="{{ route('posts.show', $post -> post_id) }}" class="btn btn-primary btn-sm">View</a>
+                                <a href="{{ route('posts.edit', $post -> post_id) }}" class="btn btn-primary btn-sm">Edit</a>
                             </td>
                         </tr>
                     @endforeach

@@ -17,9 +17,10 @@ class PostSeeder extends Seeder
         for ($i = 1; $i <= 10; $i++)
         {
             DB::table('posts') -> insert(array(
-                'title' => "Title Post " . $i,
-                'body' => "Body Post " . $i . '. ' . $lorem,
-                'user_id' => $i,
+                'post_title' => "Title Post " . $i,
+                'post_body' => "Body Post " . $i . '. ' . $lorem,
+                'post_user_id' => $i,
+                'post_created_at' => now(),
             ));
         }
     }

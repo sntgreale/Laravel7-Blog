@@ -11,6 +11,7 @@ use App\Like;
 class Post extends Model {
     //
     protected $table = "posts";
+    public $timestamps = false;
 
     public function comments()
     {

@@ -14,13 +14,13 @@ class CreateRepostsTable extends Migration
     public function up()
     {
         Schema::create('reposts', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('user_id') -> unsigned(); // User that repost the post
-            $table->integer('post_id') -> unsigned(); // Post that be resposted
-            $table->timestamps();
+            $table->increments('repost_id');
+            $table->integer('repost_user_id') -> unsigned(); // User that repost the post
+            $table->integer('repost_post_id') -> unsigned(); // Post that be resposted
+            $table->timestamp('repost_created_at');
             // Foreign Keys
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('post_id')->references('id')->on('posts');
+            $table->foreign('repost_user_id')->references('id')->on('users');
+            $table->foreign('repost_post_id')->references('post_id')->on('posts');
         });
     }
 

@@ -10,6 +10,7 @@ use App\User;
 class RePost extends Model {
     //
     protected $table = "reposts";
+    public $timestamps = false;
 
     public function post()
     {

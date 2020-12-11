@@ -17,10 +17,11 @@ class CommentSeeder extends Seeder
         for ($i = 1; $i <= 10; $i++)
         {
             DB::table('comments') -> insert(array(
-                'title' => "Title Comment " . $i,
-                'body' => "Body Comment " . $i . '. ' . $lorem,
-                'user_id' => $i,
-                'post_id' => $i,
+                'comment_title' => "Title Comment " . $i,
+                'comment_body' => "Body Comment " . $i . '. ' . $lorem,
+                'comment_user_id' => $i,
+                'comment_post_id' => $i,
+                'comment_created_at' => now(),
             ));
         }
     }

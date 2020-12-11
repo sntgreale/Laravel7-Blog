@@ -9,6 +9,7 @@ use App\User;
 class Follow extends Model {
     //
     protected $table = "follows";
+    public $timestamps = false;
 
     public function userFollower()
     {
