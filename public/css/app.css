@@ -1,0 +1,9 @@
+.cards-welcome-container {
+    padding: 15px, 15px, 15px, 15px;
+}
+
+.card-welcome {
+    width: 100%;
+    height: auto;
+    position: relative;
+}
