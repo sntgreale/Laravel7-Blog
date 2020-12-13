@@ -33,11 +33,10 @@
                             <td> {{ $comment -> comment_post_id }} </td>
                             <td> {{ $comment -> post_title }} </td>
                             <td> {{ $comment -> comment_title }} </td>
-                            <td> {{ substr( $comment -> comment_body, 0, 50 ) }} {{ strlen( $comment -> comment_body ) > 30 ? '...' : '' }} </td>
+                            <td> {{ substr( $comment -> comment_body, 0, 40 ) }} {{ strlen( $comment -> comment_body ) > 50 ? '...' : '' }} </td>
                             <td> {{ date('j M, Y', strtotime( $comment -> comment_created_at )) }} </td>
                             <td>
-                                <a href="{{ route('posts.show', $comment -> comment_id) }}" class="btn btn-primary btn-sm">View</a>
-                                <a href="{{ route('posts.edit', $comment -> comment_id) }}" class="btn btn-primary btn-sm">Edit</a>
+                                <a href="{{ route('posts.show', $comment -> comment_post_id) }}" class="btn btn-primary btn-sm">View Post</a>
                             </td>
                         </tr>
                     @endforeach

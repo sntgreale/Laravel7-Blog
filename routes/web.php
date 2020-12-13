@@ -25,7 +25,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('posts', 'PostController');
 
 // Routes COMMENTS
-Route::resource('comments', 'CommentController');
+Route::get('/comments', 'CommentController@index')->name('comments.index');
+Route::post('comments/{post_id}', ['uses' => 'CommentController@store', 'as' => 'comments.store']);
+Route::delete('comments/{comment_id}', ['uses' => 'CommentController@destroy', 'as' => 'comments.destroy']);
 
 // Routes REPOSTS
 Route::resource('reposts', 'RepostController');
@@ -35,3 +37,7 @@ Route::resource('likes', 'LikeController');
 
 // Routes FOLLOWS
 Route::resource('follows', 'FollowController');
+
+// Routes USERS
+Route::get('/users', 'UserController@index')->name('users.index');
+Route::get('/users/{user_id}', 'UserController@show')->name('users.show');

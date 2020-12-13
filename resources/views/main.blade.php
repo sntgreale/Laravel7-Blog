@@ -4,7 +4,7 @@
         @include('partials._head')
     </head>
     <body>
-        @include('layouts.app') <!-- Nav (Auth Laravel) -->
+        @include('partials._nav')
         <br>
         <div class="container"> <!-- Start of Container -->
             @include('partials._messages')

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -59,7 +60,7 @@ class PostController extends Controller
         // Find the post
         $post = Post::where('post_id', '=', $id) -> join('users', 'posts.post_user_id', '=', 'users.id') -> first();
 
-        $comments = Comment::where('comment_post_id', '=', $id) -> join('users', 'comments.comment_user_id', '=', 'users.id') -> get();
+        $comments = Comment::where('comment_post_id', '=', $id) -> join('users', 'comments.comment_user_id', '=', 'users.id') -> orderBy('comment_id', 'desc') -> get();
 
         //Comment::where('post_id', '=', $id) -> join('users', 'comments.user_id', '=', 'users.id');
 

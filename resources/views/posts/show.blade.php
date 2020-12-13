@@ -2,6 +2,10 @@
 
 @section('pageTitle', '| View Post')
 
+@section('stylesheets')
+    {!! Html::style('css/parsley.css') !!}
+@endsection
+
 @section('content')
 
     <div class="row">
@@ -13,15 +17,15 @@
             <div class="card card-body bg-light">
                 <dl class="row">
                     <div class="col-6" align="right">
-                        <p> <strong> Author: </strong> </p>
+                        <button type="button" class="btn btn-light" disabled> <strong> Author: </strong> </button>
                     </div>
                     <div class="col-6">
-                        <p> {{ $post -> name }} </p>
+                        {{ Html::linkRoute('users.show', $post -> name , [$post -> id], ['class' => 'btn btn-link']) }}
                     </div>
                 </dl>
                 <dl class="row">
                     <div class="col-6" align="right">
-                        <p> <strong> Created At: </strong> </p>
+                        <button type="button" class="btn btn-light" disabled> <strong> Created At: </strong> </button>
                     </div>
                     <div class="col-6">
                         <p> {{ date('j M, Y H:i', strtotime( $post -> post_created_at )) }} </p>
@@ -48,6 +52,24 @@
         </div>
     </div>
     <hr>
+
+    {!! Form::open(['route' => ['comments.store', $post -> post_id], 'method' => 'POST']) !!}
+        <div class="row">
+            <div class="col-md-8">
+                <h5>Create New Comment</h5>
+                <hr>
+                    {{ Form::label('comment_title', 'Title:') }}
+                    {{ Form::text('comment_title', null, array('class' => 'form-control', 'required' => '', 'maxlength' => '20')) }}
+                <br>
+                    {{ Form::label('comment_body', 'Comment Body:') }}
+                    {{ Form::textarea('comment_body', null, array('class' => 'form-control', 'required' => '', 'rows' => '3')) }}
+                <br>
+                    {{ Form::submit('Add Comment', ['class' => 'btn btn-success']) }}
+            </div>
+        </div>
+        <hr>
+    {!! Form::close() !!}
+
     <div>
         <div class="row">
             <div class="col-md-3">
@@ -55,20 +77,51 @@
                 <br>
             </div>
         </div>
-        <div class="row">
-            @foreach ($comments as $comment)
+        @foreach ($comments as $comment)
+            <div class="row">
                 <div class="col-md-1"></div>
-                <div class="col-md-8">
-                    <p> {{ $comment -> name }} --- {{ date('j M, Y H:i', strtotime( $comment -> comment_created_at )) }} </p>
+                <div class="col-md-7">
                     <h5> <strong> {{ $comment -> comment_title }} </strong> </h5>
                     <p> {{ $comment -> comment_body }} </p>
-                    <hr>
                 </div>
-                <div class="col-md-3">
-                    <!-- BUTTONS FOR ACTIONS OF COMMENTS ( EDIT / DELETE) -->
+                <div class="col-md-4">
+                    <div class="card card-body bg-light">
+
+                        <dl class="row">
+                            <div class="col-6" align="right">
+                                <button type="button" class="btn btn-light" disabled> <strong> Author: </strong> </button>
+                            </div>
+                            <div class="col-6">
+                                {{ Html::linkRoute('users.show', $comment -> name , [$post -> id], ['class' => 'btn btn-link']) }}
+                            </div>
+                        </dl>
+                        <dl class="row">
+                            <div class="col-6" align="right">
+                                <button type="button" class="btn btn-light" disabled> <strong> Created At: </strong> </button>
+                            </div>
+                            <div class="col-6">
+                                <p> {{ date('j M, Y H:i', strtotime( $comment -> comment_created_at )) }} </p>
+                            </div>
+                        </dl>
+
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                {!! Form::open(['route' => ['comments.destroy', $comment -> comment_id], 'method' => 'DELETE']) !!}
+                                    {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-h1-spacing btn-block']) !!}
+                                {!! Form::close() !!}
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            @endforeach
-        </div>
+                <hr>
+            </div>
+            <hr>
+        @endforeach
     </div>
 
+@endsection
+
+@section('scripts')
+    {!! Html::script('js/parsley.min.js') !!}
 @endsection
