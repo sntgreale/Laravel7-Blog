@@ -20,10 +20,10 @@ class CreatePostsTable extends Migration
             $table->integer('post_user_id')->unsigned();
             $table->timestamp('post_created_at');
             // Foreign Key
-            $table->foreign('post_user_id')->references('id')->on('users');
+            $table->foreign('post_user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
-
+    
     /**
      * Reverse the migrations.
      *

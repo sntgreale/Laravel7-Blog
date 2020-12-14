@@ -21,8 +21,8 @@ class CreateCommentsTable extends Migration
             $table->integer('comment_post_id') -> unsigned();
             $table->timestamp('comment_created_at');
             // Foreign Keys
-            $table->foreign('comment_user_id') -> references('id') -> on('users');
-            $table->foreign('comment_post_id') -> references('post_id') -> on('posts');
+            $table->foreign('comment_user_id') -> references('id') -> on('users')->onDelete('cascade');
+            $table->foreign('comment_post_id') -> references('post_id') -> on('posts')->onDelete('cascade');
         });
     }
 

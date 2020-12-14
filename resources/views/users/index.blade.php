@@ -31,6 +31,9 @@
                             <td> {{ date('j M, Y', strtotime( $user -> created_at )) }} </td>
                             <td>
                                 <a href="{{ route('users.show', $user -> id) }}" class="btn btn-primary btn-sm">View</a>
+                                {!! Form::open(['route' => ['users.destroy', $user -> id], 'method' => 'DELETE']) !!}
+                                    {!! Form::submit('Delete', ['class' => 'btn btn-danger btn btn-primary btn-sm']) !!}
+                                {!! Form::close() !!}
                             </td>
                         </tr>
                     @endforeach

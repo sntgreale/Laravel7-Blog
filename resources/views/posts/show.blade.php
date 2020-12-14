@@ -33,14 +33,16 @@
                 </dl>
                 <hr>
                 <div class="row">
-                    <div class="col-sm-6">
-                        {!! Html::linkRoute('posts.edit', 'Edit', array($post -> post_id), array('class' => 'btn btn-primary btn-block')) !!}
-                    </div>
-                    <div class="col-sm-6">
-                        {!! Form::open(['route' => ['posts.destroy', $post -> post_id], 'method' => 'DELETE']) !!}
-                            {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-block']) !!}
-                        {!! Form::close() !!}
-                    </div>
+                    @if ((Auth::user() -> id == $post -> post_user_id) or (Auth::user() -> is_admin == 1))
+                        <div class="col-sm-6">
+                            {!! Html::linkRoute('posts.edit', 'Edit', array($post -> post_id), array('class' => 'btn btn-primary btn-block')) !!}
+                        </div>
+                        <div class="col-sm-6">
+                            {!! Form::open(['route' => ['posts.destroy', $post -> post_id], 'method' => 'DELETE']) !!}
+                                {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-block']) !!}
+                            {!! Form::close() !!}
+                        </div>
+                    @endif
                 </div>
                 <br>
                 <div class="row">
@@ -73,7 +75,7 @@
     <div>
         <div class="row">
             <div class="col-md-3">
-                <h2>Comments</h2>
+                <h2>Comments - {{ $comments -> count() }}</h2>
                 <br>
             </div>
         </div>
@@ -106,11 +108,13 @@
 
                         <hr>
                         <div class="row">
-                            <div class="col-sm-12">
-                                {!! Form::open(['route' => ['comments.destroy', $comment -> comment_id], 'method' => 'DELETE']) !!}
-                                    {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-h1-spacing btn-block']) !!}
-                                {!! Form::close() !!}
-                            </div>
+                            @if ((Auth::user() -> id == $comment -> comment_user_id) or (Auth::user() -> is_admin == 1))
+                                <div class="col-sm-12">
+                                    {!! Form::open(['route' => ['comments.destroy', $comment -> comment_id], 'method' => 'DELETE']) !!}
+                                        {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-h1-spacing btn-block']) !!}
+                                    {!! Form::close() !!}
+                                </div>
+                            @endif
                         </div>
                     </div>
                 </div>

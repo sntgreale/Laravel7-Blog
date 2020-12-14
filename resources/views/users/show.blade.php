@@ -5,8 +5,10 @@
 @section('content')
     <div class="row">
         <div class="col-md-11">
-            <h1>User</h1>
-            <a href="" class="btn btn-primary">Follow</a>
+            <h1>{{ $user -> name }}</h1>
+            @if ((Auth::user() -> id != $user -> id) and (Auth::user() -> is_admin != 1))
+                <a href="" class="btn btn-primary">Follow</a>
+            @endif
         </div>
     </div> <!-- End of .row-->
     <br>
@@ -14,14 +16,12 @@
         <div class="col-md-12">
             <table class="table">
                 <thead>
-                    <th>#</th>
                     <th>Name</th>
                     <th>Email</th>
                     <th>Created At</th>
                 </thead>
                 <tbody>
                     <tr>
-                        <th> {{ $user -> id }} </th>
                         <th> {{ $user -> name }} </th>
                         <td> {{ $user -> email }} </td>
                         <td> {{ date('j M, Y', strtotime( $user -> created_at )) }} </td>

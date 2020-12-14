@@ -10,6 +10,7 @@ use App\Http\Controllers\Controller;
 use App\Post;
 use App\Comment;
 use App\Like;
+
 use Session;
 
 class PostController extends Controller
@@ -27,8 +28,14 @@ class PostController extends Controller
     // CREATE POST
     public function create()
     {
-        // Return a view for create post
-        return view('posts.create');
+        if ( Auth::user() -> is_admin == 0)
+        {
+            // Return a view for create post
+            return view('posts.create');
+        }
+
+        return redirect('posts');
+
     }
 
     // SAVE POST
@@ -44,6 +51,8 @@ class PostController extends Controller
         $post = new Post;
         $post -> post_title = $request -> post_title;
         $post -> post_body = $request -> post_body;
+        $post -> post_user_id = Auth::user() -> id;
+        $post -> post_created_at = now();
 
         $post -> save();
 
@@ -51,7 +60,7 @@ class PostController extends Controller
         Session::flash('success', 'The blog post was successfully save!');
 
         // Redirect to another page
-        return redirect() -> route('posts.show', $post -> post_id);
+        return redirect() -> route('users.show', Auth::user() -> id);
     }
 
     // SHOW POST
@@ -62,8 +71,6 @@ class PostController extends Controller
 
         $comments = Comment::where('comment_post_id', '=', $id) -> join('users', 'comments.comment_user_id', '=', 'users.id') -> orderBy('comment_id', 'desc') -> get();
 
-        //Comment::where('post_id', '=', $id) -> join('users', 'comments.user_id', '=', 'users.id');
-
         // Return data of the post
         return view('posts.show') -> withPost($post) -> withComments($comments);
     }
@@ -71,10 +78,18 @@ class PostController extends Controller
     // EDIT POST
     public function edit($id)
     {
+
         // Find the post in the DB
         $post = Post::where('post_id', '=', $id) -> join('users', 'posts.post_user_id', '=', 'users.id') -> first();
-        // Return the view - Pass the value of the field
-        return view('posts.edit') -> withPost($post);
+        
+        if ((Auth::user() -> id == $post -> post_user_id) or (Auth::user() -> is_admin == 1))
+        {
+            // Return the view - Pass the value of the field
+            return view('posts.edit') -> withPost($post);
+        }
+
+        return redirect('home');
+
     }
 
     // UPDATE POST
@@ -105,11 +120,6 @@ class PostController extends Controller
     // DESTROY POST
     public function destroy($id)
     {
-        // Delete likes of the post
-        Like::where('like_post_id', '=', $id) -> delete();
-
-        // Delete comments of the post
-        Comment::where('comment_post_id', '=', $id) -> delete();
 
         // Delete post
         Post::where('post_id', '=', $id) -> delete();

@@ -19,8 +19,8 @@ class CreateLikesTable extends Migration
             $table->integer('like_post_id') -> unsigned(); // Post that be liked
             $table->timestamp('like_created_at');
             // Foreign Keys
-            $table->foreign('like_user_id')->references('id')->on('users');
-            $table->foreign('like_post_id')->references('post_id')->on('posts');
+            $table->foreign('like_user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('like_post_id')->references('post_id')->on('posts')->onDelete('cascade');
         });
     }
 

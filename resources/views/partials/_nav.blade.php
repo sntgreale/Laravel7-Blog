@@ -10,14 +10,33 @@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Left Side Of Navbar -->
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/posts"> Posts </a>
-                    </li>
-                    <li>
-                        <a class="nav-link" href="/comments"> Comments </a>
-                    </li>
-                </ul>
+                @if (Auth::check())
+                    @if (Auth::user() -> is_admin == 1)
+                        <ul class="navbar-nav mr-auto">
+                            <li>
+                                <a class="nav-link" href="/users"> Users </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/posts"> Posts </a>
+                            </li>   
+                            <li>
+                                <a class="nav-link" href="/comments"> Comments </a>
+                            </li>
+                            <li>
+                                <a class="nav-link" href="/reposts"> Reposts </a>
+                            </li>
+                            <li>
+                                <a class="nav-link" href="/likes"> Likes </a>
+                            </li>
+                        </ul>
+                    @else
+                    <ul class="navbar-nav mr-auto">
+                        <li>
+                            <a class="nav-link" href="/home"> Feed </a>
+                        </li>
+                    </ul>
+                    @endif
+                @endif
 
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ml-auto">
@@ -38,8 +57,9 @@
                             </a>
                             
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('posts.index') }}"> Posts </a>
-                                <a class="dropdown-item" href="{{ route('comments.index') }}"> Comments </a>
+                                @if (Auth::user() -> is_admin == 0)
+                                    <a class="dropdown-item" href="{{ route('users.show', Auth::user() -> id) }}"> Profile </a>
+                                @endif
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                     onclick="event.preventDefault();

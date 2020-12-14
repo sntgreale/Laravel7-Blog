@@ -34,12 +34,14 @@
                     </dl>
                     <hr>
                     <div class="row">
-                        <div class="col-sm-6">
-                            {!! Html::linkRoute('posts.show', 'Cancel', array($post -> post_id), array('class' => 'btn btn-danger btn-block')) !!}
-                        </div>
-                        <div class="col-sm-6">
-                            {{ Form::submit('Save Changes', ['class' => 'btn btn-success btn-block']) }}
-                        </div>
+                        @if ((Auth::user() -> id == $post -> post_user_id) or (Auth::user() -> is_admin == 1))
+                            <div class="col-sm-6">
+                                {!! Html::linkRoute('posts.show', 'Cancel', array($post -> post_id), array('class' => 'btn btn-danger btn-block')) !!}
+                            </div>
+                            <div class="col-sm-6">
+                                {{ Form::submit('Save Changes', ['class' => 'btn btn-success btn-block']) }}
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>

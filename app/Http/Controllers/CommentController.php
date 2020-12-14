@@ -58,11 +58,16 @@ class CommentController extends Controller
         // Find the comment on the DB - For
         $comment = Comment::where('comment_id', '=', $comment_id) -> first();
 
-        // Delete the comment on the DB
-        Comment::where('comment_id', '=', $comment_id) -> delete();
+        if ((Auth::user() -> id == $comment -> comment_user_id) or (Auth::user() -> is_admin == 1) )
+        {
+            // Delete the comment on the DB
+            Comment::where('comment_id', '=', $comment_id) -> delete();
 
-        // Send message to the view
-        Session::flash('success', 'The comment was successfully deleted.');
+            // Send message to the view
+            Session::flash('success', 'The comment was successfully deleted.');
+
+            return redirect() -> route('posts.show', $comment -> comment_post_id);
+        }
 
         // Return to the view (post) where the comment was found
         return redirect() -> route('posts.show', $comment -> comment_post_id);

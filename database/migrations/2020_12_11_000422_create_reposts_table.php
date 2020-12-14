@@ -19,8 +19,8 @@ class CreateRepostsTable extends Migration
             $table->integer('repost_post_id') -> unsigned(); // Post that be resposted
             $table->timestamp('repost_created_at');
             // Foreign Keys
-            $table->foreign('repost_user_id')->references('id')->on('users');
-            $table->foreign('repost_post_id')->references('post_id')->on('posts');
+            $table->foreign('repost_user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('repost_post_id')->references('post_id')->on('posts')->onDelete('cascade');
         });
     }
 

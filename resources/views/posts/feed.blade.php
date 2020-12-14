@@ -3,7 +3,14 @@
 @section('pageTitle', ' | Feed')
 
 @section('content')
-    <h1>Your feed</h1>
+    <div class="row">
+        <div class="col-md-9">
+            <h1>Your feed</h1>
+        </div>
+        <div class="col-md-3">
+            <a href="{{ route('posts.create') }}" class="btn btn-lg btn-block btn-primary btn-h1-spacing">Create New Post</a>
+        </div>
+    </div>
     <hr>
     <div class="row">
         <div class="col-md-8">

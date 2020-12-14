@@ -31,11 +31,36 @@ class UserController extends Controller
         // Find the user
         $user = User::where('id', '=', $id) -> first();
 
+        if ($user -> is_admin == 1)
+        {
+            return redirect() -> route('users.index');
+        }
+
         // Find the posts by user
-        $posts = Post::where('post_user_id', '=', $id) -> paginate(10);
+        $posts = Post::where('post_user_id', '=', $id) -> orderBy('post_id', 'desc') -> paginate(10);
 
         // Return data of the user
         return view('users.show') -> withUser($user) -> withPosts($posts);
+    }
+
+    // DELETE USER
+    public function destroy($id)
+    {
+        // Find user on db
+        $user = User::where('id', '=', $id) -> first();
+
+        if ( Auth::user() -> is_admin == 0 )
+        {
+            return redirect() -> route('home');
+        }
+
+        // Delete User
+        User::where('id', '=', $id) -> delete();
+
+        // Send message to the view
+        Session::flash('success', 'The user was successfully deleted.');
+
+        return redirect() -> route('users.index');
     }
 
 }
