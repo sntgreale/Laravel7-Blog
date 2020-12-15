@@ -38,11 +38,14 @@
                     @foreach ($reposts as $repost)
                         <dl class="row">
                             <div class="col-md-4">
-                                {{ Html::linkRoute('users.show', $repost -> name , [$repost -> repost_user_id], ['class' => 'btn btn-link']) }}
+                                {{ Html::linkRoute('users.show', substr($repost -> name, 0, 10), [$repost -> repost_user_id], ['class' => 'btn-camp btn btn-sm btn-outline-primary']) }}
                             </div>
-                            <div class="col-md-2"> ==> </div>
+                            <div class="col-md-2">
+                                <button type="button" class="btn-sm btn btn-outline-dark" disabled> ==> </button>
+                            </div>
                             <div class="col-md-6">
-                                {{ Html::linkRoute('posts.show', $repost -> post_title , [$repost -> repost_post_id], ['class' => 'btn btn-link']) }}
+                                
+                                {{ Html::linkRoute('posts.show', substr($repost -> post_title, 0, 10).'...' , [$repost -> repost_post_id], ['class' => 'btn-camp btn btn-sm btn-outline-primary']) }}
                             </div>
                         </dl>
                     @endforeach
@@ -57,11 +60,13 @@
                     @foreach ($likes as $like)
                         <dl class="row">
                             <div class="col-md-4">
-                                {{ Html::linkRoute('users.show', $like -> name , [$like -> like_user_id], ['class' => 'btn btn-link']) }}
+                                {{ Html::linkRoute('users.show', substr($like -> name, 0, 10) , [$like -> like_user_id], ['class' => 'btn-camp btn btn-sm btn-outline-primary']) }}
                             </div>
-                            <div class="col-md-2"> ==> </div>
+                            <div class="col-md-2">
+                                <button type="button" class="btn-sm btn btn-outline-dark" disabled> ==> </button>
+                            </div>
                             <div class="col-md-6">
-                                {{ Html::linkRoute('posts.show', $like -> post_title , [$like -> like_post_id], ['class' => 'btn btn-link']) }}
+                                {{ Html::linkRoute('posts.show', substr($like -> post_title, 0, 10).'...', [$like -> like_post_id], ['class' => 'btn-camp btn btn-sm btn-outline-primary']) }}
                             </div>
                         </dl>
                     @endforeach

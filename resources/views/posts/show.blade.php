@@ -17,15 +17,15 @@
             <div class="card card-body bg-light">
                 <dl class="row">
                     <div class="col-6" align="right">
-                        <button type="button" class="btn btn-light" disabled> <strong> Author: </strong> </button>
+                        <button type="button" class="btn btn-outline-dark" disabled> <strong> Author: </strong> </button>
                     </div>
                     <div class="col-6">
-                        {{ Html::linkRoute('users.show', $post -> name , [$post -> id], ['class' => 'btn btn-link']) }}
+                        {{ Html::linkRoute('users.show', $post -> name , [$post -> id], ['class' => 'btn btn-outline-primary']) }}
                     </div>
                 </dl>
                 <dl class="row">
                     <div class="col-6" align="right">
-                        <button type="button" class="btn btn-light" disabled> <strong> Created At: </strong> </button>
+                        <button type="button" class="btn btn-outline-dark" disabled> <strong> Created At: </strong> </button>
                     </div>
                     <div class="col-6">
                         <p> {{ date('j M, Y H:i', strtotime( $post -> post_created_at )) }} </p>
@@ -35,11 +35,11 @@
                 <div class="row">
                     @if ((Auth::user() -> id == $post -> post_user_id) or (Auth::user() -> is_admin == 1))
                         <div class="col-sm-6">
-                            {!! Html::linkRoute('posts.edit', 'Edit', array($post -> post_id), array('class' => 'btn btn-primary btn-block')) !!}
+                            {!! Html::linkRoute('posts.edit', 'Edit', array($post -> post_id), array('class' => 'btn btn-outline-primary btn-block')) !!}
                         </div>
                         <div class="col-sm-6">
                             {!! Form::open(['route' => ['posts.destroy', $post -> post_id], 'method' => 'DELETE']) !!}
-                                {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-block']) !!}
+                                {!! Form::submit('Delete', ['class' => 'btn btn-outline-danger btn-block']) !!}
                             {!! Form::close() !!}
                         </div>
                     @else
@@ -81,7 +81,7 @@
                 <br>
                 <div class="row">
                     <div class="col-sm-12">
-                        {{ Html::linkRoute('posts.index', '<< See All Posts', [], ['class' => 'btn btn-secondary btn-block btn-h1-spacing']) }}
+                        {{ Html::linkRoute('posts.index', '<< See All Posts', [], ['class' => 'btn btn-outline-dark btn-block btn-h1-spacing']) }}
                     </div>
                 </div>
             </div>
@@ -125,15 +125,15 @@
 
                         <dl class="row">
                             <div class="col-6" align="right">
-                                <button type="button" class="btn btn-light" disabled> <strong> Author: </strong> </button>
+                                <button type="button" class="btn btn-outline-dark" disabled> <strong> Author: </strong> </button>
                             </div>
                             <div class="col-6">
-                                {{ Html::linkRoute('users.show', $comment -> name , [$post -> id], ['class' => 'btn btn-link']) }}
+                                {{ Html::linkRoute('users.show', $comment -> name , [$post -> id], ['class' => 'btn btn-outline-primary']) }}
                             </div>
                         </dl>
                         <dl class="row">
                             <div class="col-6" align="right">
-                                <button type="button" class="btn btn-light" disabled> <strong> Created At: </strong> </button>
+                                <button type="button" class="btn btn-outline-dark" disabled> <strong> Created At: </strong> </button>
                             </div>
                             <div class="col-6">
                                 <p> {{ date('j M, Y H:i', strtotime( $comment -> comment_created_at )) }} </p>

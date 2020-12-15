@@ -57,15 +57,15 @@ Still in development.
 ## API
 ## Endpoints:
 
-. Returns the data of the registered users (not administrator)
+1. Returns the data of the registered users (not administrator)
     - **Method:** GET
     - **URI:** api/users
     
-. Returns the data of the registered posts.
+2. Returns the data of the registered posts.
     - **Method:** GET
     - **URI:** api/posts
 
-. Return 'rePost' statistics
+3. Return 'rePost' statistics
     - **Method:** GET
     - **URI:** api/statistics
 

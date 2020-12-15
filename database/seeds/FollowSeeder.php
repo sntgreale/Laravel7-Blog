@@ -17,11 +17,14 @@ class FollowSeeder extends Seeder
         {
             for ($j = 1; $j <= 10; $j++)
             {
-                DB::table('follows') -> insert(array(
-                    'userFollower_id' => $i,
-                    'userFollowed_id' => $j,
-                    'follow_created_at' => now(),
-                ));
+                if ($i != $j)
+                {
+                    DB::table('follows') -> insert(array(
+                        'userFollower_id' => $i,
+                        'userFollowed_id' => $j,
+                        'follow_created_at' => now(),
+                    ));
+                }
             }
         }
     }

@@ -9,6 +9,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Post;
 use App\Comment;
+use App\RePost;
 use App\Like;
 use App\User;
 use App\Follow;
@@ -48,6 +49,46 @@ class UserController extends Controller
 
         // Return data of the user
         return view('users.show') -> withUser($user) -> withPosts($posts) -> withFollow($follow);
+    }
+
+    // SHOW REPOST OF USER
+    public function showreposts($id)
+    {
+        $user = User::where('id', '=', $id) -> first();
+
+        $reposts = RePost::where('repost_user_id', '=', $id) -> join('posts', 'reposts.repost_post_id', '=', 'posts.post_id' ) -> orderBy('repost_id', 'desc') -> get();
+
+        return view('users.showrepost') -> withReposts($reposts) -> withUser($user);
+    }
+
+    // SHOW LIKE OF USER
+    public function showlikes($id)
+    {
+        $user = User::where('id', '=', $id) -> first();
+
+        $likes = Like::where('like_user_id', '=', $id) -> join('posts', 'likes.like_post_id', '=', 'posts.post_id' ) -> orderBy('like_id', 'desc') -> get();
+
+        return view('users.showlike') -> withLikes($likes) -> withUser($user);
+    }
+
+    // SHOW FOLLOWED OF USER
+    public function showfollowed($id)
+    {
+        $user = User::where('id', '=', $id) -> first();
+
+        $followeds = Follow::where('userFollower_id', '=', $id) -> join('users', 'follows.userFollowed_id', '=', 'users.id' ) -> orderBy('follow_id', 'desc') -> get();
+
+        return view('users.showfollowed') -> withFolloweds($followeds) -> withUser($user);
+    }
+
+    // SHOW FOLLOWERS OF USER
+    public function showfollower($id)
+    {
+        $user = User::where('id', '=', $id) -> first();
+
+        $followers = Follow::where('userFollowed_id', '=', $id) -> join('users', 'follows.userFollower_id', '=', 'users.id' ) -> orderBy('follow_id', 'desc') -> get();
+
+        return view('users.showfollower') -> withFollowers($followers) -> withUser($user);
     }
 
     // DELETE USER

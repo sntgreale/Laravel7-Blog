@@ -57,6 +57,11 @@ Route::group(['middleware' => ['auth', 'web']], function() {
     
     // Route USER
     Route::get('/users/{user_id}', 'UserController@show')->name('users.show');
+    Route::get('/users/{user_id}/repost', 'UserController@showreposts')->name('users.showreposts');
+    Route::get('/users/{user_id}/like', 'UserController@showlikes')->name('users.showlikes');
+
+    Route::get('/users/{user_id}/follower', 'UserController@showfollower')->name('users.showfollower');
+    Route::get('/users/{user_id}/followed', 'UserController@showfollowed')->name('users.showfollowed');
 
     // Route REPOST
     Route::post('/reposts/{post_id}', 'RepostController@store')->name('reposts.store');
