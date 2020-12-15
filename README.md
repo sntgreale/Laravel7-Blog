@@ -24,42 +24,42 @@ Still in development.
 1.- Create a DB Schema called 'rePostDB'.
 
 2.- Clone the git-repo.
-    ** https://github.com/sntgreale/Laravel7-Blog.git **
+**https://github.com/sntgreale/Laravel7-Blog.git**
 
 3.- With your terminal, navigate within the project. And type the following commands:
-    .- - **`composer install`**
-    .- **`npm install`**
+.- **`composer install`**
+.- **`npm install`**
     
 4.- Set up the '.env' file.
 
 5.- Type the following commands:
-    .- **`php artisan migrate`** 
-    .- **`php artisan db:seed --class=DatabaseSeeder`** 
+.- **`php artisan migrate`** 
+.- **`php artisan db:seed --class=DatabaseSeeder`** 
 
     The migration will create some user, posts, comments, refueling, likes and follows.
 
-        Users:
-            email: userX@gmail.com (where 'X' is a number from 1 to 10)
-            password: 1234567890
+    Users:
+        email: userX@gmail.com (where 'X' is a number from 1 to 10)
+        password: 1234567890
     
 6.- Finally you are ready to start using the app. Run:
-    .- **`php artisan serve`**
-    .- By default it will run on port **8000**
+.- **`php artisan serve`**
+.- By default it will run on port **8000**
     
 
 ## API
 ## Endpoints:
 
 .-Returns the data of the registered users (not administrator)
-    .- **Method:** GET
-    .- **URI:** api/users
+.- **Method:** GET
+.- **URI:** api/users
     
 .- Returns the data of the registered posts.
-    .- **Method:** GET
-    .- **URI:** api/posts
+.- **Method:** GET
+.- **URI:** api/posts
 
 .- Return 'rePost' statistics
-    .- **Method:** GET
-    .- **URI:** api/statistics
+.- **Method:** GET
+.- **URI:** api/statistics
 
 ## ## ## ##
