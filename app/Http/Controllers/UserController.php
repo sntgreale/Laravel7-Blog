@@ -21,7 +21,7 @@ class UserController extends Controller
     public function index()
     {
         // Find all Users
-        $users = User::orderBy('id' , 'desc') -> paginate(10);
+        $users = User::orderBy('id' , 'desc') -> where('is_admin', '=', 0) -> paginate(10);
 
         // Return all users to the view
         return view('users.index') -> withUsers($users);

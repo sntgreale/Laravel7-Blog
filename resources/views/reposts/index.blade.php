@@ -19,6 +19,7 @@
                 <thead>
                     <th>Author Name</th>
                     <th>Author Email</th>
+                    <th>Post ID</th>
                     <th>Post Title</th>
                     <th>Post Body</th>
                     <th>Repost Created At</th>
@@ -27,9 +28,10 @@
 
                     @foreach ($reposts as $repost)
                         <tr>
-                            <td> {{ Html::linkRoute('users.show', $repost -> name , [$repost -> repost_user_id], ['class' => 'btn btn-link']) }} </td>
+                            <th> <a href="{{ route('users.show', $repost -> repost_user_id) }}" class="btn-camp btn btn-outline-dark btn-sm btn-block">{{ $repost -> name }}</a> </th>
                             <td> {{ $repost -> email }} </td>
-                            <td> {{ Html::linkRoute('posts.show', $repost -> post_title , [$repost -> repost_post_id], ['class' => 'btn btn-link']) }} </td>
+                            <td> {{ $repost -> repost_post_id }} </td>
+                            <th> <a href="{{ route('users.show', $repost -> repost_post_id) }}" class="btn-camp btn btn-outline-dark btn-sm btn-block">{{ $repost -> post_title }}</a> </th>
                             <td> {{ substr( $repost -> post_body, 0, 50 ) }} {{ strlen( $repost -> post_body ) > 50 ? '...' : '' }} </td>
                             <td> {{ date('j M, Y', strtotime( $repost -> repost_created_at )) }} </td>
                         </tr>

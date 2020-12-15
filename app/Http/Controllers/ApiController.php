@@ -18,7 +18,7 @@ class ApiController extends Controller
     public function users()
     {
         // Select all users of the DB.
-        $users = User::select('id', 'name', 'email', 'created_at') -> where('is_admin', '=', 0) -> get();
+        $users = User::select('name', 'email', 'created_at') -> where('is_admin', '=', 0) -> get();
 
         return ($users);
     }
@@ -26,7 +26,7 @@ class ApiController extends Controller
     public function posts()
     {
         // Select all posts on the DB.
-        $posts = Post::select('post_id', 'post_title', 'post_body', 'post_created_at') -> get(); 
+        $posts = Post::select('post_title', 'post_body', 'post_created_at') -> get(); 
 
         return($posts);
     }

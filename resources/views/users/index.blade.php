@@ -26,13 +26,13 @@
                     @foreach ($users as $user)
                         <tr>
                             <th> {{ $user -> id }} </th>
-                            <th> {{ $user -> name }} </th>
+                            <th> <a href="{{ route('users.show', $user -> id) }}" class="btn-camp btn btn-outline-dark btn-sm btn-block">{{ $user -> name }}</a> </th>
                             <td> {{ $user -> email }} </td>
                             <td> {{ date('j M, Y', strtotime( $user -> created_at )) }} </td>
                             <td>
-                                <a href="{{ route('users.show', $user -> id) }}" class="btn btn-primary btn-sm">View</a>
+                                <a href="{{ route('users.show', $user -> id) }}" class="btn-up btn btn-outline-primary btn-sm btn-block">View</a>
                                 {!! Form::open(['route' => ['users.destroy', $user -> id], 'method' => 'DELETE']) !!}
-                                    {!! Form::submit('Delete', ['class' => 'btn btn-danger btn btn-primary btn-sm']) !!}
+                                    {!! Form::submit('Delete', ['class' => 'btn btn-up btn-outline-danger btn btn-sm btn-block']) !!}
                                 {!! Form::close() !!}
                             </td>
                         </tr>

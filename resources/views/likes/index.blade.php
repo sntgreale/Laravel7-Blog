@@ -19,6 +19,7 @@
                 <thead>
                     <th>Author Name</th>
                     <th>Author Email</th>
+                    <th>Post ID</th>
                     <th>Post Title</th>
                     <th>Post Body</th>
                     <th>Like Created At</th>
@@ -27,9 +28,10 @@
 
                     @foreach ($likes as $like)
                         <tr>
-                            <td> {{ Html::linkRoute('users.show', $like -> name , [$like -> like_user_id], ['class' => 'btn btn-link']) }} </td>
+                            <th> <a href="{{ route('users.show', $like -> like_user_id) }}" class="btn-camp btn btn-outline-dark btn-sm btn-block">{{ $like -> name }}</a> </th>
                             <td> {{ $like -> email }} </td>
-                            <td> {{ Html::linkRoute('posts.show', $like -> post_title , [$like -> like_post_id], ['class' => 'btn btn-link']) }} </td>
+                            <td> {{ $like -> like_post_id }} </td>
+                            <th> <a href="{{ route('posts.show', $like -> like_post_id) }}" class="btn-camp btn btn-outline-dark btn-sm btn-block">{{ $like -> post_title }}</a> </th>
                             <td> {{ substr( $like -> post_body, 0, 50 ) }} {{ strlen( $like -> post_body ) > 50 ? '...' : '' }} </td>
                             <td> {{ date('j M, Y', strtotime( $like -> like_created_at )) }} </td>
                         </tr>

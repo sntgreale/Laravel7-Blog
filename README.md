@@ -39,9 +39,16 @@ Still in development.
     The migration will create some user, posts, comments, refueling, likes and follows.
 
     Users:
-        email: userX@gmail.com (where 'X' is a number from 1 to 10)
-        password: 1234567890
+    - email: userX@gmail.com (where 'X' is a number from 1 to 10)
+
+    - password: 1234567890
     
+    Admin:
+    - email: admin@gmail.com
+
+    - password: 1234567890
+
+
 6. Finally you are ready to start using the app. Run:
     - **`php artisan serve`**
     - By default it will run on port **8000**

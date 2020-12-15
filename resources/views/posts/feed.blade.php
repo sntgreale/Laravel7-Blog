@@ -22,7 +22,7 @@
 
                         <p>{{ substr($post -> post_body, 0, 250) }} {{ strlen($post -> post_body) > 250 ? '...' : "" }} </p>
 
-                        <a href="{{ route('posts.show', $post -> post_id) }}" class="btn btn-primary">View Post</a>
+                        <a href="{{ route('posts.show', $post -> post_id) }}" class="btn btn-sm btn-outline-primary">View Post</a>
 
                         <hr>
                     </div>

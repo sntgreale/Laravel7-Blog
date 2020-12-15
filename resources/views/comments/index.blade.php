@@ -29,9 +29,9 @@
 
                     @foreach ($comments as $comment)
                         <tr>
-                            <th> {{ $comment -> name }} </th>
+                            <th> <a href="{{ route('users.show', $comment -> id) }}" class="btn-camp btn btn-outline-dark btn-sm btn-block">{{ $comment -> name }}</a> </th>
                             <td> {{ $comment -> comment_post_id }} </td>
-                            <td> {{ $comment -> post_title }} </td>
+                            <th> <a href="{{ route('posts.show', $comment -> post_id) }}" class="btn-camp btn btn-outline-dark btn-sm btn-block">{{ $comment -> post_title }}</a> </th>
                             <td> {{ $comment -> comment_title }} </td>
                             <td> {{ substr( $comment -> comment_body, 0, 40 ) }} {{ strlen( $comment -> comment_body ) > 50 ? '...' : '' }} </td>
                             <td> {{ date('j M, Y', strtotime( $comment -> comment_created_at )) }} </td>

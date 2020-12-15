@@ -10,38 +10,56 @@
     </div>
     <div class="row">
         <div class="col-md-8 mx-auto">
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+            rePost is a blog where you can create your own posts, comment on the posts you want, follow your friends or favorite users, in addition, you can refuel the posts you want to share them with your followers and like to find them in the future.
         </div>
     </div>
     <hr>
     <div class="row cards-welcome-container">
         <div class="col-md-3 mx-auto">
             <div class="card card-welcome" style="width: 18rem;">
-                <img src="..." class="card-img-top" alt="...">
+                <br>
+                <div class="row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-8">
+                        <button type="button" class="btn btn-outline-primary btn-block" disabled>Follow</button>
+                    </div>
+                </div>
                 <div class="card-body">
                     <hr>
-                    <h5 class="card-title">Special title treatment</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <h5 class="card-title">Follow your friends</h5>
+                    <p class="card-text">Follow your friends don't miss their last activity.</p>
                 </div>
             </div>
         </div>
         <div class="col-md-3 mx-auto">
             <div class="card card-welcome" style="width: 18rem;">
-                <img src="..." class="card-img-top" alt="...">
+                <br>
+                <div class="row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-8">
+                        <button type="button" class="btn btn-outline-success btn-block" disabled>RePost</button>
+                    </div>
+                </div>
                 <div class="card-body">
                     <hr>
-                    <h5 class="card-title">Special title treatment</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <h5 class="card-title">Refuelling the Posts</h5>
+                    <p class="card-text">Repost the posts you want to share with your followers.</p>
                 </div>
             </div>
         </div>
         <div class="col-md-3 mx-auto">
             <div class="card card-welcome" style="width: 18rem;">
-                <img src="..." class="card-img-top" alt="...">
+                <br>
+                <div class="row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-8">
+                        <button type="button" class="btn btn-outline-danger btn-block" disabled>Like</button>
+                    </div>
+                </div>
                 <div class="card-body">
                     <hr>
-                    <h5 class="card-title">Special title treatment</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <h5 class="card-title">Like the Posts</h5>
+                    <p class="card-text">Like the posts you want to find them faster.</p>
                 </div>
             </div>
         </div>
