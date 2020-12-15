@@ -11,6 +11,8 @@ use App\Post;
 use App\Comment;
 use App\Like;
 use App\User;
+use App\Follow;
+
 use Session;
 
 class UserController extends Controller
@@ -36,11 +38,16 @@ class UserController extends Controller
             return redirect() -> route('users.index');
         }
 
+        $follow = Follow::where([
+            ['userFollower_id', '=', Auth::user() -> id],
+            ['userFollowed_id', '=', $id]
+        ]) -> get();
+
         // Find the posts by user
         $posts = Post::where('post_user_id', '=', $id) -> orderBy('post_id', 'desc') -> paginate(10);
 
         // Return data of the user
-        return view('users.show') -> withUser($user) -> withPosts($posts);
+        return view('users.show') -> withUser($user) -> withPosts($posts) -> withFollow($follow);
     }
 
     // DELETE USER

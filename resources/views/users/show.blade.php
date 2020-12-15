@@ -7,7 +7,17 @@
         <div class="col-md-11">
             <h1>{{ $user -> name }}</h1>
             @if ((Auth::user() -> id != $user -> id) and (Auth::user() -> is_admin != 1))
-                <a href="" class="btn btn-primary">Follow</a>
+                @if( $follow -> count() != 0)
+                    @foreach ($follow as $foll)
+                        {!! Form::open(['route' => ['follows.destroy', $foll -> follow_id] , 'method' => 'DELETE']) !!}
+                            {!! Form::submit('Unfollow', ['class' => 'btn btn-outline-primary']) !!}
+                        {!! Form::close() !!}
+                    @endforeach
+                @else
+                    {!! Form::open(['route' => ['follows.store', $user -> id]]) !!}
+                        {!! Form::submit('Follow', ['class' => 'btn btn-outline-primary']) !!}
+                    {!! Form::close() !!}
+                @endif
             @endif
         </div>
     </div> <!-- End of .row-->

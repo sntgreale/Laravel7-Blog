@@ -11,13 +11,17 @@ class RepostSeeder extends Seeder
      */
     public function run()
     {
+        // Create 3 reposts for user
         for ($i = 1; $i <= 10; $i++)
         {
-            DB::table('reposts') -> insert(array(
-                'repost_user_id' => 1,
-                'repost_post_id' => $i,
-                'repost_created_at' => now(),
-            ));
+            for ($j = 1; $j <= 3; $j++)
+            {
+                DB::table('reposts') -> insert(array(
+                    'repost_user_id' => $i,
+                    'repost_post_id' => $j,
+                    'repost_created_at' => now(),
+                ));
+            }
         }
     }
 }

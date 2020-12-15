@@ -11,13 +11,17 @@ class LikeSeeder extends Seeder
      */
     public function run()
     {
+        // Create 3 likes for user
         for ($i = 1; $i <= 10; $i++)
         {
-            DB::table('likes') -> insert(array(
-                'like_user_id' => 1,
-                'like_post_id' => $i,
-                'like_created_at' => now(),
-            ));
+            for ($j = 4; $j <= 7; $j++)
+            {
+                DB::table('likes') -> insert(array(
+                    'like_user_id' => $i,
+                    'like_post_id' => $j,
+                    'like_created_at' => now(),
+                ));
+            }
         }
     }
 }

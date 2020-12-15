@@ -12,14 +12,17 @@ class FollowSeeder extends Seeder
     public function run()
     {
 
-        // Create 10 follow
+        // Create 3 follow for user
         for ($i = 1; $i <= 10; $i++)
         {
-            DB::table('follows') -> insert(array(
-                'userFollower_id' => 1,
-                'userFollowed_id' => $i,
-                'follow_created_at' => now(),
-            ));
+            for ($j = 1; $j <= 10; $j++)
+            {
+                DB::table('follows') -> insert(array(
+                    'userFollower_id' => $i,
+                    'userFollowed_id' => $j,
+                    'follow_created_at' => now(),
+                ));
+            }
         }
     }
 }

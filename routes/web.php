@@ -59,7 +59,7 @@ Route::group(['middleware' => ['auth', 'web']], function() {
     Route::get('/users/{user_id}', 'UserController@show')->name('users.show');
 
     // Route REPOST
-    Route::post('/reposts/{post_id}', 'RepostController@create')->name('reposts.create');
+    Route::post('/reposts/{post_id}', 'RepostController@store')->name('reposts.store');
     Route::delete('/reposts/{repost_id}', 'RepostController@destroy')->name('reposts.destroy');
 
     // Route LIKES
@@ -67,7 +67,7 @@ Route::group(['middleware' => ['auth', 'web']], function() {
     Route::delete('/likes/{like_id}', 'LikeController@destroy')->name('likes.destroy');
 
     // Route FOLLOWS
-    Route::post('/follows/{follow_id}', 'FollowController@store')->name('follows.store');
+    Route::post('/follows/{user_id}', 'FollowController@store')->name('follows.store');
     Route::delete('/follows/{follow_id}', 'FollowController@destroy')->name('follows.destroy');
 });
 

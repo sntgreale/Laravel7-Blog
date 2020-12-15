@@ -9,6 +9,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Post;
 use App\Comment;
+use App\RePost;
 use App\Like;
 
 use Session;
@@ -71,8 +72,18 @@ class PostController extends Controller
 
         $comments = Comment::where('comment_post_id', '=', $id) -> join('users', 'comments.comment_user_id', '=', 'users.id') -> orderBy('comment_id', 'desc') -> get();
 
+        $repost = RePost::where([
+            ['repost_user_id', '=', Auth::user() -> id],
+            ['repost_post_id', '=', $id]
+        ]) -> get();
+
+        $like = Like::where([
+            ['like_user_id', '=', Auth::user() -> id],
+            ['like_post_id', '=', $id]
+        ]) -> get();
+
         // Return data of the post
-        return view('posts.show') -> withPost($post) -> withComments($comments);
+        return view('posts.show') -> withPost($post) -> withComments($comments) -> withRepost($repost) -> withLike($like);
     }
 
     // EDIT POST

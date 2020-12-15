@@ -40,7 +40,7 @@ class RepostController extends Controller
         Session::flash('success', 'The repost was successfully save!');
         
         // Redirect to another page
-        return redirect() -> route('posts.show', $repost_post_id);
+        return redirect() -> route('posts.show', $post_id);
     }
 
     public function destroy($repost_id)

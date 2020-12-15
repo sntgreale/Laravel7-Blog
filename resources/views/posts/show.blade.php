@@ -42,6 +42,40 @@
                                 {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-block']) !!}
                             {!! Form::close() !!}
                         </div>
+                    @else
+
+                        @if( $repost -> count() != 0)
+                            @foreach ($repost as $rep)
+                                <div class="col-sm-6">
+                                    {!! Form::open(['route' => ['reposts.destroy', $rep -> repost_id] , 'method' => 'DELETE']) !!}
+                                        {!! Form::submit('UnRePost', ['class' => 'btn btn-outline-success btn-block']) !!}
+                                    {!! Form::close() !!}
+                                </div>
+                            @endforeach
+                        @else
+                            <div class="col-sm-6">
+                                {!! Form::open(['route' => ['reposts.store', $post -> post_id]]) !!}
+                                    {!! Form::submit('RePost', ['class' => 'btn btn-outline-success btn-block']) !!}
+                                {!! Form::close() !!}
+                            </div>
+                        @endif
+
+                        @if( $like -> count() != 0)
+                            @foreach ($like as $li)
+                                <div class="col-sm-6">
+                                    {!! Form::open(['route' => ['likes.destroy', $li -> like_id] , 'method' => 'DELETE']) !!}
+                                        {!! Form::submit('UnLike', ['class' => 'btn btn-outline-danger btn-block']) !!}
+                                    {!! Form::close() !!}
+                                </div>
+                            @endforeach
+                        @else
+                            <div class="col-sm-6">
+                                {!! Form::open(['route' => ['likes.store', $post -> post_id]]) !!}
+                                    {!! Form::submit('Like', ['class' => 'btn btn-outline-danger btn-block']) !!}
+                                {!! Form::close() !!}
+                            </div>
+                        @endif
+
                     @endif
                 </div>
                 <br>

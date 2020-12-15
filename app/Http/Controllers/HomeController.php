@@ -50,13 +50,13 @@ class HomeController extends Controller
         }
 
         // Obtain the posts of the following
-        $posts = Post::whereIn('post_user_id', $ids) -> join('users', 'posts.post_user_id', '=', 'users.id') -> paginate(5);
+        $posts = Post::whereIn('post_user_id', $ids) -> join('users', 'posts.post_user_id', '=', 'users.id') -> orderBy('post_id', 'desc')  -> paginate(7);
 
         // Obtain the latest (5) reposts of the following
-        $reposts = RePost::whereIn('repost_user_id', $ids) -> join('users', 'reposts.repost_user_id', '=', 'users.id') -> join('posts', 'reposts.repost_post_id', '=', 'posts.post_id') -> get() -> take(7);
+        $reposts = RePost::whereIn('repost_user_id', $ids) -> join('users', 'reposts.repost_user_id', '=', 'users.id') -> join('posts', 'reposts.repost_post_id', '=', 'posts.post_id') -> orderBy('repost_id', 'desc') -> get() -> take(7);
 
         // Obtain the latest (5) likes of the following
-        $likes = Like::whereIn('like_user_id', $ids) -> join('users', 'likes.like_user_id', '=', 'users.id') -> join('posts', 'likes.like_post_id', '=', 'posts.post_id') -> get() -> take(7);
+        $likes = Like::whereIn('like_user_id', $ids) -> join('users', 'likes.like_user_id', '=', 'users.id') -> join('posts', 'likes.like_post_id', '=', 'posts.post_id') -> orderBy('like_id', 'desc')  -> get() -> take(7);
         
         // Return data of the post
         return view('posts.feed') -> withPosts($posts) -> withReposts($reposts) -> withLikes($likes);
