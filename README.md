@@ -21,20 +21,20 @@ Still in development.
 
 ## How to install RePost 
 
-1.- Create a DB Schema called 'rePostDB'.
+1 - Create a DB Schema called 'rePostDB'.
 
-2.- Clone the git-repo.
-**https://github.com/sntgreale/Laravel7-Blog.git**
+2 - Clone the git-repo.
+    - **https://github.com/sntgreale/Laravel7-Blog.git**
 
-3.- With your terminal, navigate within the project. And type the following commands:
-.- **`composer install`**
-.- **`npm install`**
+3 - With your terminal, navigate within the project. And type the following commands:
+    - **`composer install`**
+    - **`npm install`**
     
-4.- Set up the '.env' file.
+4 - Set up the '.env' file.
 
-5.- Type the following commands:
-.- **`php artisan migrate`** 
-.- **`php artisan db:seed --class=DatabaseSeeder`** 
+5 - Type the following commands:
+    - **`php artisan migrate`** 
+    - **`php artisan db:seed --class=DatabaseSeeder`** 
 
     The migration will create some user, posts, comments, refueling, likes and follows.
 
@@ -42,24 +42,24 @@ Still in development.
         email: userX@gmail.com (where 'X' is a number from 1 to 10)
         password: 1234567890
     
-6.- Finally you are ready to start using the app. Run:
-.- **`php artisan serve`**
-.- By default it will run on port **8000**
+6 - Finally you are ready to start using the app. Run:
+    - **`php artisan serve`**
+    - By default it will run on port **8000**
     
 
 ## API
 ## Endpoints:
 
-.-Returns the data of the registered users (not administrator)
-.- **Method:** GET
-.- **URI:** api/users
+- Returns the data of the registered users (not administrator)
+    - **Method:** GET
+    - **URI:** api/users
     
-.- Returns the data of the registered posts.
-.- **Method:** GET
-.- **URI:** api/posts
+- Returns the data of the registered posts.
+    - **Method:** GET
+    - **URI:** api/posts
 
-.- Return 'rePost' statistics
-.- **Method:** GET
-.- **URI:** api/statistics
+- Return 'rePost' statistics
+    - **Method:** GET
+    - **URI:** api/statistics
 
 ## ## ## ##
