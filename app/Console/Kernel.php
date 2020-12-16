@@ -2,8 +2,13 @@
 
 namespace App\Console;
 
+use App\Jobs\ClearStorage;
+use App\Jobs\NightlyReport;
+
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+
+use App\Console\Commands\TestNewPostNotification;
 
 class Kernel extends ConsoleKernel
 {
@@ -14,6 +19,7 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         //
+        TestNewPostNotification::class,
     ];
 
     /**

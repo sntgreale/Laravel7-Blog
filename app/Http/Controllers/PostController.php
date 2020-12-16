@@ -5,12 +5,15 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+use Illuminate\Notifications\Notifiable; // Slack Noti
+
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Post;
 use App\Comment;
 use App\RePost;
 use App\Like;
+use App\Notifications\SlackNoti;
 
 use Session;
 
