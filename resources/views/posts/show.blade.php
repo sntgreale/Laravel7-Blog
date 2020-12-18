@@ -128,7 +128,7 @@
                                 <button type="button" class="btn btn-outline-dark" disabled> <strong> Author: </strong> </button>
                             </div>
                             <div class="col-6">
-                                {{ Html::linkRoute('users.show', $comment -> name , [$post -> id], ['class' => 'btn btn-outline-primary']) }}
+                                {{ Html::linkRoute('users.show', $comment -> name , [$comment -> comment_user_id], ['class' => 'btn btn-outline-primary']) }}
                             </div>
                         </dl>
                         <dl class="row">

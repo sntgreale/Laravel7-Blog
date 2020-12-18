@@ -30,11 +30,11 @@
                             </li>
                         </ul>
                     @else
-                    <ul class="navbar-nav mr-auto">
-                        <li>
-                            <a class="nav-link" href="/home"> Feed </a>
-                        </li>
-                    </ul>
+                        <ul class="navbar-nav mr-auto">
+                            <li>
+                                <a class="nav-link" href="/home"> Feed </a>
+                            </li>
+                        </ul>
                     @endif
                 @endif
 

@@ -21,20 +21,20 @@ Auth::routes();
 
 // Routes ADMIN
 Route::group(['middleware' => ['auth', 'web', 'admin']], function() {
-    
+
     // Route POST
     Route::get('/posts', 'PostController@index')->name('posts.index');
-    
+
     // Route COMMENT
     Route::get('/comments', 'CommentController@index')->name('comments.index');
-    
+
     // Route USER
     Route::get('/users', 'UserController@index')->name('users.index');
     Route::delete('/users/{id}', 'UserController@destroy')->name('users.destroy');
 
     // Route RESPOST
     Route::get('/reposts', 'RepostController@index')->name('reposts.index');
-    
+
     // Route RESPOST
     Route::get('/likes', 'LikeController@index')->name('likes.index');
 
@@ -42,7 +42,7 @@ Route::group(['middleware' => ['auth', 'web', 'admin']], function() {
 
 // Routes USERS
 Route::group(['middleware' => ['auth', 'web']], function() {
-    
+
     // Routes POSTS
     Route::get('/posts/create', 'PostController@create')->name('posts.create');
     Route::post('/posts', 'PostController@store')->name('posts.store');
@@ -50,11 +50,11 @@ Route::group(['middleware' => ['auth', 'web']], function() {
     Route::put('/posts/{post}', 'PostController@update')->name('posts.update');
     Route::get('/posts/{post}', 'PostController@show')->name('posts.show');
     Route::get('/posts/{post}/edit', 'PostController@edit')->name('posts.edit');
-    
+
     // Routes COMMENTS
     Route::post('/comments/{post_id}', ['uses' => 'CommentController@store', 'as' => 'comments.store'])->middleware('auth');
     Route::delete('/comments/{comment_id}', ['uses' => 'CommentController@destroy', 'as' => 'comments.destroy'])->middleware('auth');
-    
+
     // Route USER
     Route::get('/users/{user_id}', 'UserController@show')->name('users.show');
     Route::get('/users/{user_id}/repost', 'UserController@showreposts')->name('users.showreposts');
@@ -81,5 +81,5 @@ Route::group(['middleware' => ['auth', 'web', 'user']], function() {
 
     // Route POSTS - (Only Users)
     Route::get('/home', 'HomeController@index')->name('home');
-    
+
 });

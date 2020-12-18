@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 use Illuminate\Notifications\Notifiable; // Slack Noti
 
-use App\Notifications\SlackNoti;
+use App\Notifications\SlackNoti; // Slack Noti
 
 use App\User;
 use App\Comment;
