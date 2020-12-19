@@ -78,12 +78,12 @@ class PostController extends Controller
         $repost = RePost::where([
             ['repost_user_id', '=', Auth::user() -> id],
             ['repost_post_id', '=', $id]
-        ]) -> get();
+        ]) -> join('users', 'reposts.repost_user_id', '=', 'users.id') -> get();
 
         $like = Like::where([
             ['like_user_id', '=', Auth::user() -> id],
             ['like_post_id', '=', $id]
-        ]) -> get();
+        ]) -> join('users', 'likes.like_user_id', '=', 'users.id')  -> get();
 
         // Return data of the post
         return view('posts.show') -> withPost($post) -> withComments($comments) -> withRepost($repost) -> withLike($like);

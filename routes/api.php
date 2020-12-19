@@ -20,6 +20,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('/users', 'ApiController@users')->name('api.users');
 
+Route::get('/users/{user_id}', 'ApiController@userX')->name('api.userX');
+
 Route::get('/posts', 'ApiController@posts')->name('api.posts');
+
+Route::get('/posts/{post_id}', 'ApiController@postX')->name('api.postX');
 
 Route::get('/statistics', 'ApiController@statistics')->name('api.statistics');

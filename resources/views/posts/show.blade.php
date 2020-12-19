@@ -59,7 +59,12 @@
                                 {!! Form::close() !!}
                             </div>
                         @endif
-
+                        <div class="col-md-6">
+                            <button type="button" class="btn btn-outline-dark btn-block" disabled>Totales = {{ $repost -> count() }} </button>
+                        </div>
+                        <div class="col-md-12">
+                            <br>
+                        </div>
                         @if( $like -> count() != 0)
                             @foreach ($like as $li)
                                 <div class="col-sm-6">
@@ -75,7 +80,12 @@
                                 {!! Form::close() !!}
                             </div>
                         @endif
-
+                        <div class="col-md-6">
+                            <button type="button" class="btn btn-outline-dark btn-block" disabled>Totales = {{ $like -> count() }} </button>
+                        </div>
+                        <div class="col-md-12">
+                            <hr>
+                        </div>
                     @endif
                 </div>
                 <br>

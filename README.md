@@ -60,12 +60,20 @@ Still in development.
 1. Returns the data of the registered users (not administrator)
     - **Method:** GET
     - **URI:** api/users
-    
-2. Returns the data of the registered posts.
+
+2. Returns the data of the user 'X' (not administrador)
+    - **Method:** GET
+    - **URI:** api/users/{user_id}
+
+3. Returns the data of the registered posts.
     - **Method:** GET
     - **URI:** api/posts
 
-3. Return 'rePost' statistics
+4. Returns the data of the posts 'X'
+    - **Method:** GEt
+    - **URI:** api/posts/{post_id}
+
+5. Return 'rePost' statistics
     - **Method:** GET
     - **URI:** api/statistics
 

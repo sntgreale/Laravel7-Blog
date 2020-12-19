@@ -1,0 +1,7 @@
+POSTS:
+
+    (posts.show) Total 'repost' and 'like' -> Redirección a página con info de los usuarios.
+
+    Agregar imagenes a los posts.
+
+    Agregar ctegorías a los posts.
