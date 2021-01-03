@@ -12,6 +12,17 @@
 
                 {{ Form::label('post_body', 'Body:', ['class' => 'form-spacing-top']) }}
                 {{ Form::textarea('post_body', null, ['class' => 'form-control']) }}
+
+                {{ Form::label('post_category_id', 'Category: ') }}
+                <select class="form-control" name="post_category_id">
+                    @foreach ($categories as $category)
+                        @if($category -> category_id == $post -> post_category_id)
+                            <option value="{{ $category -> category_id }}" selected>{{ $category -> category_name }} </option>
+                        @else
+                            <option value="{{ $category -> category_id }}">{{ $category -> category_name }} </option>
+                        @endif
+                    @endforeach
+                </select>
             </div>
             
             <div class="col-md-4">

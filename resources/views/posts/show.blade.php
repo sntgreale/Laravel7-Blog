@@ -97,8 +97,16 @@
             </div>
         </div>
     </div>
-    <hr>
-
+    <br>
+    <div class="row">
+        <div class="col-md-12">
+            <button class="btn btn-outline-dark btn-md" disabled>Category: </button>
+            <button class="btn btn-dark btn-md" disabled><strong> {{ $post -> category_name }} </strong> </button>
+        </div>
+        <div class="col-md-12">
+            <hr>
+        </div>
+    </div>
     {!! Form::open(['route' => ['comments.store', $post -> post_id], 'method' => 'POST']) !!}
         <div class="row">
             <div class="col-md-8">

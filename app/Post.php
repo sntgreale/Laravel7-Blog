@@ -12,6 +12,7 @@ use App\User;
 use App\Comment;
 use App\RePost;
 use App\Like;
+use App\Category;
 
 class Post extends Model {
 
@@ -31,6 +32,11 @@ class Post extends Model {
     protected $table = "posts";
     public $timestamps = false;
 
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+    
     public function comments()
     {
         return $this->hasMany(Comment::class);

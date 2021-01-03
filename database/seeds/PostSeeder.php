@@ -21,6 +21,7 @@ class PostSeeder extends Seeder
                 DB::table('posts') -> insert(array(
                     'post_title' => "U " . $i . ' T Post ' . $j,
                     'post_body' => "Body Post " . $j . '. ' . $lorem,
+                    'post_category_id' => $j,
                     'post_user_id' => $i,
                     'post_created_at' => now(),
                 ));

@@ -25,6 +25,9 @@ Route::group(['middleware' => ['auth', 'web', 'admin']], function() {
     // Route POST
     Route::get('/posts', 'PostController@index')->name('posts.index');
 
+    // Route Category
+    Route::resource('categories', 'CategoryController', ['except' => ['create', 'show']]);
+
     // Route COMMENT
     Route::get('/comments', 'CommentController@index')->name('comments.index');
 

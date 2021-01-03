@@ -18,6 +18,9 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="/posts"> Posts </a>
+                            </li>
+                            <li>
+                                <a class="nav-link" href="/categories"> Categories </a>
                             </li>   
                             <li>
                                 <a class="nav-link" href="/comments"> Comments </a>

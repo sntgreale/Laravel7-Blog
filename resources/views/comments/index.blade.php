@@ -36,7 +36,7 @@
                             <td> {{ substr( $comment -> comment_body, 0, 40 ) }} {{ strlen( $comment -> comment_body ) > 50 ? '...' : '' }} </td>
                             <td> {{ date('j M, Y', strtotime( $comment -> comment_created_at )) }} </td>
                             <td>
-                                <a href="{{ route('posts.show', $comment -> comment_post_id) }}" class="btn btn-primary btn-sm">View Post</a>
+                                <a href="{{ route('posts.show', $comment -> comment_post_id) }}" class="btn btn-outline-primary btn-sm">View Post</a>
                             </td>
                         </tr>
                     @endforeach

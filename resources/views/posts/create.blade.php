@@ -18,6 +18,13 @@
                     {{ Form::label('post_body', 'Post Body:') }}
                     {{ Form::textarea('post_body', null, array('class' => 'form-control', 'required' => '')) }}
                 <br>
+                    {{ Form::label('post_category_id', 'Category: ') }}
+                    <select class="form-control" name="post_category_id">
+                        @foreach ($categories as $category)
+                            <option value="{{ $category -> category_id }}">{{ $category -> category_name }} </option>
+                        @endforeach
+                    </select>
+                <br>
                     {{ Form::submit('Create Post', array('class' => 'btn btn-success btn-lg btn-block')) }}
             </div>
         </div>

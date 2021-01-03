@@ -4,4 +4,6 @@ POSTS:
 
     Agregar imagenes a los posts.
 
-    Agregar ctegorías a los posts.
+CATEGORIES:
+
+    Function to delete ! IMPORTANT
