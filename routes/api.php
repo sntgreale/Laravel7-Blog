@@ -24,6 +24,10 @@ Route::get('/users/{user_id}', 'ApiController@userX')->name('api.userX');
 
 Route::get('/posts', 'ApiController@posts')->name('api.posts');
 
+Route::get('/posts/complete', 'ApiController@postsComp')->name('api.postsComp');
+
 Route::get('/posts/{post_id}', 'ApiController@postX')->name('api.postX');
+
+Route::get('/posts/{post_id}/complete', 'ApiController@postXComp')->name('api.postXComp');
 
 Route::get('/statistics', 'ApiController@statistics')->name('api.statistics');

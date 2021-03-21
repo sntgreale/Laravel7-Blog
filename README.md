@@ -5,14 +5,6 @@
 
 ![Database_Model](https://github.com/sntgreale/Laravel7-Blog/blob/main/public/images/DiagramDB.png)
 
-
-<p align="center">
-    <a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-    <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-    <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-    <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
-
 ## About The Project
 
 In the context of the Integrated Final Evaluation, of the course Programming III (Laravel), I developed a small web application to simulate a classic Blog with, in addition, the possibility of following users, refueling posts and likes.
@@ -65,15 +57,23 @@ Still in development.
     - **Method:** GET
     - **URI:** api/users/{user_id}
 
-3. Returns the data of the registered posts.
+3. Returns the data of the registered posts. (Without TAGS)
     - **Method:** GET
     - **URI:** api/posts
 
-4. Returns the data of the posts 'X'
+4. Returns the data of the registered posts. (With TAGS)
+    - **Method:** GET
+    - **URI:** api/posts/complete
+
+5. Returns the data of the posts 'X'. (Without TAGS)
     - **Method:** GET
     - **URI:** api/posts/{post_id}
 
-5. Return 'rePost' statistics
+6. Return the data of the posts 'X'. (With TAGS)
+    - **Method:** GET
+    - **URI:** api/posts/{post_id}/complete
+
+7. Return 'rePost' statistics
     - **Method:** GET
     - **URI:** api/statistics
 
