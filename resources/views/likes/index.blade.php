@@ -32,7 +32,7 @@
                             <td> {{ $like -> email }} </td>
                             <td> {{ $like -> like_post_id }} </td>
                             <th> <a href="{{ route('posts.show', $like -> like_post_id) }}" class="btn-camp btn btn-outline-dark btn-sm btn-block">{{ $like -> post_title }}</a> </th>
-                            <td> {{ substr( $like -> post_body, 0, 50 ) }} {{ strlen( $like -> post_body ) > 50 ? '...' : '' }} </td>
+                            <td> {!! substr( $like -> post_body, 0, 50 ) !!} {{ strlen( $like -> post_body ) > 50 ? '...' : '' }} </td>
                             <td> {{ date('j M, Y', strtotime( $like -> like_created_at )) }} </td>
                         </tr>
                     @endforeach

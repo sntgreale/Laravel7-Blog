@@ -20,7 +20,7 @@
                         <h2>{{ $post -> name}} - {{ $post -> post_title }}</h2>
                         <h5>Published: {{ date('j M, Y', strtotime($post -> post_created_at)) }} </h5>
 
-                        <p>{{ substr($post -> post_body, 0, 250) }} {{ strlen($post -> post_body) > 250 ? '...' : "" }} </p>
+                        <p>{!! substr(strip_tags($post -> post_body), 0, 250) !!} {{ strlen(strip_tags($post -> post_body)) > 250 ? '...' : "" }} </p>
 
                         <a href="{{ route('posts.show', $post -> post_id) }}" class="btn btn-sm btn-outline-primary">View Post</a>
 

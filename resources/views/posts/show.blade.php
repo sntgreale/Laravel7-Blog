@@ -11,7 +11,7 @@
     <div class="row">
         <div class="col-md-8">
             <h1> {{ $post -> post_title }} </h1>
-            <p class="lead"> {{ $post -> post_body }} </p>
+            <p class="lead"> {!! $post -> post_body !!} </p>
         </div>
         <div class="col-md-4">
             <div class="card card-body bg-light">

@@ -30,7 +30,7 @@
                     @foreach ($reposts as $repost)
                         <tr>
                             <th> <a href="{{ route('posts.show', $repost -> repost_post_id) }}" class="btn-camp btn btn-outline-dark btn-sm btn-block">{{ $repost -> post_title }}</a> </th>
-                            <td> {{ substr( $repost -> post_body, 0, 75 ) }} {{ strlen( $repost -> post_body ) > 70 ? '...' : '' }} </td>
+                            <td> {!! substr( $repost -> post_body, 0, 75 ) !!} {{ strlen( $repost -> post_body ) > 70 ? '...' : '' }} </td>
                             <td> {{ date('j M, Y', strtotime( $repost -> repost_created_at )) }} </td>
                         </tr>
                     @endforeach

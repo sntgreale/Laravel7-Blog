@@ -56,6 +56,8 @@ class ApiController extends Controller
         // Select all posts on the DB.
         $posts = Post::select('post_title', 'post_body', 'post_created_at') -> get(); 
 
+        $posts = strip_tags($posts);
+
         return($posts);
     }
 
@@ -64,6 +66,10 @@ class ApiController extends Controller
         // Select X posts on the DB. With statistics
         $postX = Post::select('post_title', 'post_body', 'post_created_at') -> where('post_id', '=', $id) -> get(); 
 
+        $postReturn[0]["post_title"] = $postX[0]['post_title'];
+        $postReturn[0]["post_body"] = strip_tags($postX[0]['post_body']);
+        $postReturn[0]["post_created_at"] = $postX[0]['post_created_at'];
+
         $comments = Comment::where('comment_post_id', '=', $id) -> select('comment_title', 'comment_body', 'comment_created_at') -> get();
 
         $userRepost = RePost::where('repost_post_id', '=', $id) -> join('users', 'users.id', '=', 'reposts.repost_user_id') -> select('name', 'email') -> get();
@@ -71,7 +77,7 @@ class ApiController extends Controller
         $userLike = Like::where('like_post_id', '=', $id) -> join('users', 'users.id', '=', 'likes.like_user_id') -> select('name', 'email') -> get();
 
         $data = [];
-        $data['Post'] = $postX;
+        $data['Post'] = $postReturn;
         $data['Comments'] = $comments;
         $data['Reposts'] = $userRepost;
         $data['Likes'] = $userLike;

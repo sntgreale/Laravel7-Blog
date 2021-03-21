@@ -61,7 +61,7 @@ Still in development.
     - **Method:** GET
     - **URI:** api/users
 
-2. Returns the data of the user 'X' (not administrador)
+2. Returns the data of the user 'X' (not administrator)
     - **Method:** GET
     - **URI:** api/users/{user_id}
 
@@ -70,7 +70,7 @@ Still in development.
     - **URI:** api/posts
 
 4. Returns the data of the posts 'X'
-    - **Method:** GEt
+    - **Method:** GET
     - **URI:** api/posts/{post_id}
 
 5. Return 'rePost' statistics

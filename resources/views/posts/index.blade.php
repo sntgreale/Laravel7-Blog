@@ -30,7 +30,7 @@
                             <th> {{ $post -> post_id }} </th>
                             <th> <a href="{{ route('users.show', $post -> id) }}" class="btn-camp btn btn-outline-dark btn-sm btn-block">{{ $post -> name }}</a> </th>
                             <th> <a href="{{ route('posts.show', $post -> post_id) }}" class="btn-camp btn btn-outline-dark btn-sm btn-block">{{ $post -> post_title }}</a> </th>
-                            <td> {{ substr( $post -> post_body, 0, 50 ) }} {{ strlen( $post -> post_body ) > 50 ? '...' : '' }} </td>
+                            <td> {!! substr(strip_tags($post -> post_body), 0, 50 ) !!} {{ strlen(strip_tags($post -> post_body)) > 50 ? '...' : '' }} </td>
                             <th> <button href="" class="btn-camp btn btn-outline-dark btn-sm btn-block">{{ $post -> category_name }}</button> </th>
                             <td> {{ date('j M, Y', strtotime( $post -> post_created_at )) }} </td>
                             <td>

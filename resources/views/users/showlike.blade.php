@@ -30,7 +30,7 @@
                     @foreach ($likes as $like)
                         <tr>
                             <th> <a href="{{ route('posts.show', $like -> like_post_id) }}" class="btn-camp btn btn-outline-dark btn-sm btn-block">{{ $like -> post_title }}</a> </th>
-                            <td> {{ substr( $like -> post_body, 0, 75 ) }} {{ strlen( $like -> post_body ) > 70 ? '...' : '' }} </td>
+                            <td> {!! substr( $like -> post_body, 0, 75 ) !!} {{ strlen( $like -> post_body ) > 70 ? '...' : '' }} </td>
                             <td> {{ date('j M, Y', strtotime( $like -> like_created_at )) }} </td>
                         </tr>
                     @endforeach
