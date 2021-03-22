@@ -16,7 +16,7 @@ class PostSeeder extends Seeder
         // Create 3 posts for user
         for ($i = 1; $i <= 10; $i++)
         {
-            for ($j = 1; $j <= 3; $j++)
+            for ($j = 2; $j <= 4; $j++)
             {
                 DB::table('posts') -> insert(array(
                     'post_title' => "U " . $i . ' T Post ' . $j,

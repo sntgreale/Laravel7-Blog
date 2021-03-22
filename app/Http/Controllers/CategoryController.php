@@ -15,8 +15,7 @@ class CategoryController extends Controller
     public function index()
     {
         // Display all Categories
-
-        $categories = Category::paginate(10);
+        $categories = Category::where('category_id', '!=', 1) -> paginate(10);
 
         return view('categories.index') -> withCategories($categories);
     }
@@ -75,14 +74,14 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         // Change category to existing posts that the category to be removed
-        // $posts = Post::where('post_category_id', '=', $id) -> update(['post_category_id' => null]);
+        $posts = Post::where('post_category_id', '=', $id) -> update(['post_category_id' => 1]);
 
         // Delete category specific
-        // Category::where('category_id', '=', $id) -> delete();
+        Category::where('category_id', '=', $id) -> delete();
 
         // Send message to the view
-        // Session::flash('success', 'The category was successfully deleted.');
+        Session::flash('success', 'The category was successfully deleted.');
         
-        // return redirect() -> route('categories.index');
+        return redirect() -> route('categories.index');
     }
 }

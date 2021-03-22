@@ -12,8 +12,14 @@ class CategorySeeder extends Seeder
     public function run()
     {
 
-        // Create 3 categories
-        for ($i = 1; $i <= 3; $i++)
+        // Create 5 categories
+
+        DB::table('categories') -> insert(array(
+            'category_name' => "Not specified ",
+            'category_created_at' => now(),
+        ));
+
+        for ($i = 1; $i <= 4; $i++)
         {
             DB::table('categories') -> insert(array(
                 'category_name' => "Category " . $i,

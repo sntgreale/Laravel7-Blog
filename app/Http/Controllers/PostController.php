@@ -36,7 +36,7 @@ class PostController extends Controller
         if ( Auth::user() -> is_admin == 0)
         {
             // Get all categories
-            $categories = Category::all();
+            $categories = Category::where('category_id', '!=', 1) -> get();
             // Return a view for create post
             return view('posts.create') -> withCategories($categories);
         }
@@ -102,7 +102,7 @@ class PostController extends Controller
         $post = Post::where('post_id', '=', $id) -> join('categories', 'categories.category_id', '=', 'posts.post_category_id') -> join('users', 'posts.post_user_id', '=', 'users.id') -> first();
         
         // Get all categories
-        $categories = Category::all();
+        $categories = Category::where('category_id', '!=', 1) -> get();
 
         if ((Auth::user() -> id == $post -> post_user_id) or (Auth::user() -> is_admin == 1))
         {
